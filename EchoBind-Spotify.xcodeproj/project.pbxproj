@@ -14,6 +14,10 @@
 		6312470026239A6F0064EFE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 631246FE26239A6F0064EFE1 /* LaunchScreen.storyboard */; };
 		6312470B26239A6F0064EFE1 /* EchoBind_SpotifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6312470A26239A6F0064EFE1 /* EchoBind_SpotifyTests.swift */; };
 		6312471626239A6F0064EFE1 /* EchoBind_SpotifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6312471526239A6F0064EFE1 /* EchoBind_SpotifyUITests.swift */; };
+		631247342623A2CB0064EFE1 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631247332623A2CB0064EFE1 /* Button.swift */; };
+		6312473E2623A4290064EFE1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6312473D2623A4290064EFE1 /* SwiftyJSON.swift */; };
+		6312474C2623A9AB0064EFE1 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 631247382623A33F0064EFE1 /* SpotifyiOS.framework */; };
+		6312474D2623A9AB0064EFE1 /* SpotifyiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 631247382623A33F0064EFE1 /* SpotifyiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +37,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6312474E2623A9AB0064EFE1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6312474D2623A9AB0064EFE1 /* SpotifyiOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		631246F026239A6C0064EFE1 /* EchoBind-Spotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EchoBind-Spotify.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		631246F326239A6C0064EFE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +65,10 @@
 		6312471126239A6F0064EFE1 /* EchoBind-SpotifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EchoBind-SpotifyUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6312471526239A6F0064EFE1 /* EchoBind_SpotifyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EchoBind_SpotifyUITests.swift; sourceTree = "<group>"; };
 		6312471726239A6F0064EFE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		631247332623A2CB0064EFE1 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		631247382623A33F0064EFE1 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
+		6312473D2623A4290064EFE1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		631247482623A56F0064EFE1 /* EchoBind-Spotify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EchoBind-Spotify-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6312474C2623A9AB0064EFE1 /* SpotifyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +159,7 @@
 			children = (
 				631246F926239A6C0064EFE1 /* Main.storyboard */,
 				631246FE26239A6F0064EFE1 /* LaunchScreen.storyboard */,
+				631247332623A2CB0064EFE1 /* Button.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -153,6 +177,9 @@
 			children = (
 				6312470126239A6F0064EFE1 /* Info.plist */,
 				631246FC26239A6F0064EFE1 /* Assets.xcassets */,
+				6312473D2623A4290064EFE1 /* SwiftyJSON.swift */,
+				631247382623A33F0064EFE1 /* SpotifyiOS.framework */,
+				631247482623A56F0064EFE1 /* EchoBind-Spotify-Bridging-Header.h */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -167,6 +194,7 @@
 				631246EC26239A6C0064EFE1 /* Sources */,
 				631246ED26239A6C0064EFE1 /* Frameworks */,
 				631246EE26239A6C0064EFE1 /* Resources */,
+				6312474E2623A9AB0064EFE1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -288,7 +316,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				631246F826239A6C0064EFE1 /* ViewController.swift in Sources */,
+				631247342623A2CB0064EFE1 /* Button.swift in Sources */,
 				631246F426239A6C0064EFE1 /* AppDelegate.swift in Sources */,
+				6312473E2623A4290064EFE1 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,13 +496,19 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V66UJ72Z63;
-				INFOPLIST_FILE = "EchoBind-Spotify/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EchoBind-Spotify/Resources",
+				);
+				INFOPLIST_FILE = "EchoBind-Spotify/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dbarkman.EchoBind-Spotify";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "EchoBind-Spotify/Resources/EchoBind-Spotify-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -485,13 +521,19 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V66UJ72Z63;
-				INFOPLIST_FILE = "EchoBind-Spotify/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EchoBind-Spotify/Resources",
+				);
+				INFOPLIST_FILE = "EchoBind-Spotify/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dbarkman.EchoBind-Spotify";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "EchoBind-Spotify/Resources/EchoBind-Spotify-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
