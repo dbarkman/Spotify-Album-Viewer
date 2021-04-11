@@ -38,14 +38,12 @@ class SpotifyService: NSObject, SPTSessionManagerDelegate {
         UserDefaults.standard.set(session.accessToken, forKey: "accessToken")
         print("Auth connected! AccessToken: \(session.accessToken)")
         print("Token expires: \(session.expirationDate)")
+        NotificationCenter.default.post(name: .sessionInitiated, object: nil)
 //        let apiService = APIService()
 //        apiService.getAlbums(getAlbumsWithUrlClosure: { json, response in
 //            print("response: \(response)")
 //            print("json: \(json)")
 //        })
-//        DispatchQueue.main.async {
-//            self.updateViewBasedOnConnected()
-//        }
     }
 
 }

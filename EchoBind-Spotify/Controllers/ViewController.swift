@@ -9,21 +9,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-//    private let SpotifyClientID = "737bab0a173d4b299a0180156c8ac780"
-//    private let SpotifyRedirectURI = URL(string: "EchoBind-Spotify://spotify-login-callback")!
-//
-//    lazy var configuration: SPTConfiguration = {
-//        let configuration = SPTConfiguration(clientID: SpotifyClientID, redirectURL: SpotifyRedirectURI)
-//        configuration.tokenSwapURL = URL(string: "https://echobindspotifyalbumviewer.herokuapp.com/api/token")
-//        configuration.tokenRefreshURL = URL(string: "https://echobindspotifyalbumviewer.herokuapp.com/api/refresh_token")
-//        return configuration
-//    }()
-//
-//    lazy var sessionManager: SPTSessionManager = {
-//        let manager = SPTSessionManager(configuration: configuration, delegate: self)
-//        return manager
-//    }()
-    
     let spotifyService = SpotifyService()
 
     // MARK: - Subviews
@@ -40,6 +25,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateView), name: .sessionInitiated, object: nil)
+        
         view.backgroundColor = UIColor.white
         
         view.addSubview(connectLabel)
@@ -66,6 +54,14 @@ class ViewController: UIViewController {
         updateViewBasedOnConnected()
     }
 
+    @objc func updateView() {
+        //the purpose of this function is to run another fuction that is usually called from the main thread, but when called by messaging,
+        //it runs on a background thread, so I use this function to run it on the main thread, as required
+        DispatchQueue.main.async {
+            self.updateViewBasedOnConnected()
+        }
+    }
+    
     func updateViewBasedOnConnected() {
         if (spotifyService.sessionManager.session?.accessToken != nil) {
             connectButton.isHidden = true
