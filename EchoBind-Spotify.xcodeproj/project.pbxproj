@@ -18,6 +18,9 @@
 		6312473E2623A4290064EFE1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6312473D2623A4290064EFE1 /* SwiftyJSON.swift */; };
 		6312474C2623A9AB0064EFE1 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 631247382623A33F0064EFE1 /* SpotifyiOS.framework */; };
 		6312474D2623A9AB0064EFE1 /* SpotifyiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 631247382623A33F0064EFE1 /* SpotifyiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6353A1392623AF920091FC4F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353A1382623AF920091FC4F /* Network.swift */; };
+		6353A13F2623AFB20091FC4F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353A13E2623AFB20091FC4F /* APIService.swift */; };
+		6353A1452623B3AD0091FC4F /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353A1442623B3AD0091FC4F /* SpotifyService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		631247382623A33F0064EFE1 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		6312473D2623A4290064EFE1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		631247482623A56F0064EFE1 /* EchoBind-Spotify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EchoBind-Spotify-Bridging-Header.h"; sourceTree = "<group>"; };
+		6353A1382623AF920091FC4F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		6353A13E2623AFB20091FC4F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		6353A1442623B3AD0091FC4F /* SpotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,9 @@
 		6312472926239D7D0064EFE1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				6353A13E2623AFB20091FC4F /* APIService.swift */,
+				6353A1382623AF920091FC4F /* Network.swift */,
+				6353A1442623B3AD0091FC4F /* SpotifyService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -315,9 +324,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6353A1392623AF920091FC4F /* Network.swift in Sources */,
 				631246F826239A6C0064EFE1 /* ViewController.swift in Sources */,
 				631247342623A2CB0064EFE1 /* Button.swift in Sources */,
 				631246F426239A6C0064EFE1 /* AppDelegate.swift in Sources */,
+				6353A1452623B3AD0091FC4F /* SpotifyService.swift in Sources */,
+				6353A13F2623AFB20091FC4F /* APIService.swift in Sources */,
 				6312473E2623A4290064EFE1 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
