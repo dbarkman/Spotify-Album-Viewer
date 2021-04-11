@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		631246F426239A6C0064EFE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631246F326239A6C0064EFE1 /* AppDelegate.swift */; };
-		631246F626239A6C0064EFE1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631246F526239A6C0064EFE1 /* SceneDelegate.swift */; };
 		631246F826239A6C0064EFE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631246F726239A6C0064EFE1 /* ViewController.swift */; };
 		631246FB26239A6C0064EFE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 631246F926239A6C0064EFE1 /* Main.storyboard */; };
 		631246FD26239A6F0064EFE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 631246FC26239A6F0064EFE1 /* Assets.xcassets */; };
@@ -37,7 +36,6 @@
 /* Begin PBXFileReference section */
 		631246F026239A6C0064EFE1 /* EchoBind-Spotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EchoBind-Spotify.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		631246F326239A6C0064EFE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		631246F526239A6C0064EFE1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		631246F726239A6C0064EFE1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		631246FA26239A6C0064EFE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		631246FC26239A6F0064EFE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,12 +98,10 @@
 			isa = PBXGroup;
 			children = (
 				631246F326239A6C0064EFE1 /* AppDelegate.swift */,
-				631246F526239A6C0064EFE1 /* SceneDelegate.swift */,
-				631246F726239A6C0064EFE1 /* ViewController.swift */,
-				631246F926239A6C0064EFE1 /* Main.storyboard */,
-				631246FC26239A6F0064EFE1 /* Assets.xcassets */,
-				631246FE26239A6F0064EFE1 /* LaunchScreen.storyboard */,
-				6312470126239A6F0064EFE1 /* Info.plist */,
+				6312472926239D7D0064EFE1 /* Services */,
+				6312472A26239D8A0064EFE1 /* Views */,
+				6312472B26239D950064EFE1 /* Controllers */,
+				6312472C26239DA10064EFE1 /* Resources */,
 			);
 			path = "EchoBind-Spotify";
 			sourceTree = "<group>";
@@ -126,6 +122,39 @@
 				6312471726239A6F0064EFE1 /* Info.plist */,
 			);
 			path = "EchoBind-SpotifyUITests";
+			sourceTree = "<group>";
+		};
+		6312472926239D7D0064EFE1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6312472A26239D8A0064EFE1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				631246F926239A6C0064EFE1 /* Main.storyboard */,
+				631246FE26239A6F0064EFE1 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6312472B26239D950064EFE1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				631246F726239A6C0064EFE1 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6312472C26239DA10064EFE1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6312470126239A6F0064EFE1 /* Info.plist */,
+				631246FC26239A6F0064EFE1 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +289,6 @@
 			files = (
 				631246F826239A6C0064EFE1 /* ViewController.swift in Sources */,
 				631246F426239A6C0064EFE1 /* AppDelegate.swift in Sources */,
-				631246F626239A6C0064EFE1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
