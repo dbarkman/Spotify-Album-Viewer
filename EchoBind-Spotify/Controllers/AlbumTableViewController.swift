@@ -9,13 +9,38 @@ import UIKit
 
 class AlbumTableViewController: UITableViewController {
     
+    // MARK: - Variables
+
     let apiService = APIService()
     var albums = [Album]()
+    lazy var spotifyService = SpotifyService()
+
+    // MARK: - Main Functions
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let apiService = APIService()
+        let spotifyGreen = UIColor(red:(42.0 / 255.0), green:(183.0 / 255.0), blue:(89.0 / 255.0), alpha:1.0)
+        view.backgroundColor = spotifyGreen
+        navigationController?.navigationBar.backgroundColor = spotifyGreen
+        title = "My Spotify Albums"
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchAlbums), name: .sessionInitiated, object: nil)
+
+        if let expirationDate = UserDefaults.standard.object(forKey: "expirationDate") as? Date {
+            if Date() > expirationDate {
+                let scope: SPTScope = [.userLibraryRead]
+                spotifyService.sessionManager.initiateSession(with: scope, options: .default)
+            } else {
+                fetchAlbums()
+            }
+        }
+
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.tableFooterView = UIView(frame: .zero)
+    }
+    
+    @objc func fetchAlbums() {
         apiService.getAlbums(getAlbumsWithUrlClosure: { json, response in
             DispatchQueue.main.async {
                 self.populateTable(json)
@@ -25,6 +50,11 @@ class AlbumTableViewController: UITableViewController {
     
     func populateTable(_ json: JSON) {
         let itemArray = json["items"].arrayValue
+        if itemArray.count == 0 {
+            let helpAlbum = Album(id: "0", name: "You currently have no albums in your library on:", artist: "spotify.com", imageURL: "")
+            albums.append(helpAlbum)
+            tableView.reloadData()
+        }
         for item in itemArray {
             let artistArray = item["album"]["artists"].arrayValue
             var artists = [String]()
@@ -44,11 +74,7 @@ class AlbumTableViewController: UITableViewController {
         }
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    // MARK: - TableView Functions
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return albums.count
@@ -78,6 +104,8 @@ class AlbumTableViewController: UITableViewController {
         showEnterAlbumNotesAlert(album: album)
     }
     
+    // MARK: - Album Notes Functions
+
     func showEnterAlbumNotesAlert(album: Album) {
         let alert = UIAlertController(title: "Add your own notes for this album?", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -93,9 +121,8 @@ class AlbumTableViewController: UITableViewController {
     }
     
     func saveAlbumNotes(album: Album, notes: String) {
-        let apiService = APIService()
         apiService.saveAlbumNotes(album: album, notes: notes, saveAlbumNotesWithUrlClosure: { json, response in
-            print("response: \(response)")
+            print("status code: \(response.statusCode)")
             print("json: \(json)")
         })
     }

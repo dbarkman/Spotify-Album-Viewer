@@ -28,4 +28,5 @@ struct Network {
     static func getImage(from url: URL, getImageClosure: @escaping (Data?, URLResponse?, Error?) -> Void) {
         URLSession.shared.dataTask(with: url, completionHandler: getImageClosure).resume()
     }
+    
 }

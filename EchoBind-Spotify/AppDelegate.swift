@@ -11,22 +11,13 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    lazy var rootViewController = ViewController()
     lazy var spotifyService = SpotifyService()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        if let storedDate = UserDefaults.standard.object(forKey: "expirationDate") as? Date {
-            if Date() > storedDate {
-                print("Renewing Session")
-                let scope: SPTScope = [.userLibraryRead]
-                spotifyService.sessionManager.initiateSession(with: scope, options: .default)
-            }
+        if UserDefaults.standard.object(forKey: "expirationDate") == nil {
+            UserDefaults.standard.set(Date(), forKey: "expirationDate")
         }
         
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        window?.rootViewController = rootViewController
-//        window?.makeKeyAndVisible()
         return true
     }
 

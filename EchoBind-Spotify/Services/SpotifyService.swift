@@ -9,6 +9,8 @@ import Foundation
 
 class SpotifyService: NSObject, SPTSessionManagerDelegate {
     
+    // MARK: - Spotify Session Manager Setup
+
     private let SpotifyClientID = "737bab0a173d4b299a0180156c8ac780"
     private let SpotifyRedirectURI = URL(string: "EchoBind-Spotify://spotify-login-callback")!
 
@@ -24,7 +26,7 @@ class SpotifyService: NSObject, SPTSessionManagerDelegate {
         return manager
     }()
 
-    // MARK: - SPTSessionManagerDelegate
+    // MARK: - Spotify Session Manager Delegates
 
     func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
         print("Authorization Failed: \(error)")
@@ -38,8 +40,6 @@ class SpotifyService: NSObject, SPTSessionManagerDelegate {
         UserDefaults.standard.set(session.accessToken, forKey: "accessToken")
         UserDefaults.standard.set(session.refreshToken, forKey: "refreshToken")
         UserDefaults.standard.set(session.expirationDate, forKey: "expirationDate")
-        print("Auth connected! AccessToken: \(session.accessToken)")
-        print("Token expires: \(session.expirationDate)")
         NotificationCenter.default.post(name: .sessionInitiated, object: nil)
     }
 
