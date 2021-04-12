@@ -8,6 +8,7 @@
 import Foundation
 
 struct Album {
+    var id: String
     var name: String
     var artist: String
     var imageURL: String

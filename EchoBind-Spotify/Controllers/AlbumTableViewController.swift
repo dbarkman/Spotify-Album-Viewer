@@ -17,8 +17,6 @@ class AlbumTableViewController: UITableViewController {
 
         let apiService = APIService()
         apiService.getAlbums(getAlbumsWithUrlClosure: { json, response in
-//            print("response: \(response)")
-//            print("json: \(json)")
             DispatchQueue.main.async {
                 self.populateTable(json)
             }
@@ -36,9 +34,10 @@ class AlbumTableViewController: UITableViewController {
                 }
             }
             let artistsJoined = artists.joined(separator: ", ")
-            if let albumName = item["album"]["name"].rawString(), let imageURL = item["album"]["images"][2]["url"].rawString() {
-                print(imageURL)
-                let album = Album(name: albumName, artist: artistsJoined, imageURL: imageURL)
+            if let albumId = item["album"]["id"].rawString(),
+               let albumName = item["album"]["name"].rawString(),
+               let imageURL = item["album"]["images"][2]["url"].rawString() {
+                let album = Album(id: albumId, name: albumName, artist: artistsJoined, imageURL: imageURL)
                 albums.append(album)
                 tableView.reloadData()
             }
@@ -70,8 +69,35 @@ class AlbumTableViewController: UITableViewController {
                 }
             })
         }
-            
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let album = albums[indexPath.row]
+        showEnterAlbumNotesAlert(album: album)
+    }
+    
+    func showEnterAlbumNotesAlert(album: Album) {
+        let alert = UIAlertController(title: "Add your own notes for this album?", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = "add notes here"
+        })
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            if let notes = alert.textFields?.first?.text {
+                self.saveAlbumNotes(album: album, notes: notes)
+            }
+        }))
+        self.present(alert, animated: true)
+    }
+    
+    func saveAlbumNotes(album: Album, notes: String) {
+        let apiService = APIService()
+        apiService.saveAlbumNotes(album: album, notes: notes, saveAlbumNotesWithUrlClosure: { json, response in
+            print("response: \(response)")
+            print("json: \(json)")
+        })
     }
 
 }
