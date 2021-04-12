@@ -10,24 +10,59 @@ import XCTest
 
 class EchoBind_SpotifyTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    let apiService = APIService()
+    
+    func testGetAlbumsAPICallStatusCode() throws {
+        apiService.getAlbums(getAlbumsWithUrlClosure: { json, response in
+            XCTAssertEqual(
+                response.statusCode,
+                200,
+                "Response code should be 200."
+            )
+        })
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testGetAlbumsAPICallData() throws {
+        apiService.getAlbums(getAlbumsWithUrlClosure: { json, response in
+            if let href = json["href"].rawString() {
+                XCTAssertEqual(href, "https://api.spotify.com/v1/me/albums?market=US&limit=50")
+            }
+        })
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testSaveAlbumNotesAPICallStatusCode() throws {
+        let album = Album(id: "101", name: "Album", artist: "Artist", imageURL: "")
+        apiService.saveAlbumNotes(album: album, notes: "some notes", saveAlbumNotesWithUrlClosure: { json, response in
+            XCTAssertEqual(
+                response.statusCode,
+                201,
+                "Response code should be 201."
+            )
+        })
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testSaveAlbumNotesAPICallData() throws {
+        let album = Album(id: "101", name: "Album", artist: "Artist", imageURL: "")
+        apiService.saveAlbumNotes(album: album, notes: "some notes", saveAlbumNotesWithUrlClosure: { json, response in
+            if let note = json["note"].rawString() {
+                XCTAssertEqual(note, "some notes")
+            }
+            if let albumId = json["albumId"].rawString() {
+                XCTAssertEqual(albumId, "101")
+            }
+        })
+    }
+    
+    func testNetworkCallAPIStatusCode() throws {
+        var request = URLRequest(url: URL(string: "https://jsonplaceholder.typicode.com/posts/1")!)
+        request.httpMethod = "GET"
+        Network.callAPI(request: request, callAPIClosure: { json, response in
+            XCTAssertEqual(
+                response.statusCode,
+                200,
+                "Response code should be 200."
+            )
+        })
     }
 
 }
