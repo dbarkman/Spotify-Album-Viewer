@@ -22,6 +22,7 @@
 		6353A13F2623AFB20091FC4F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353A13E2623AFB20091FC4F /* APIService.swift */; };
 		6353A1452623B3AD0091FC4F /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353A1442623B3AD0091FC4F /* SpotifyService.swift */; };
 		6353A14A2623B8100091FC4F /* SessionDidInitiateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353A1492623B8100091FC4F /* SessionDidInitiateEvent.swift */; };
+		6353A1502623CE0E0091FC4F /* AlbumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353A14F2623CE0E0091FC4F /* AlbumTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		6353A13E2623AFB20091FC4F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		6353A1442623B3AD0091FC4F /* SpotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
 		6353A1492623B8100091FC4F /* SessionDidInitiateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDidInitiateEvent.swift; sourceTree = "<group>"; };
+		6353A14F2623CE0E0091FC4F /* AlbumTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				631246F726239A6C0064EFE1 /* ViewController.swift */,
+				6353A14F2623CE0E0091FC4F /* AlbumTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				6353A1452623B3AD0091FC4F /* SpotifyService.swift in Sources */,
 				6353A13F2623AFB20091FC4F /* APIService.swift in Sources */,
 				6353A14A2623B8100091FC4F /* SessionDidInitiateEvent.swift in Sources */,
+				6353A1502623CE0E0091FC4F /* AlbumTableViewController.swift in Sources */,
 				6312473E2623A4290064EFE1 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

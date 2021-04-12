@@ -77,9 +77,7 @@ class ViewController: UIViewController {
     // MARK: - Actions
 
     @objc func didTapDisconnect(_ button: UIButton) {
-        if (spotifyService.sessionManager.session?.accessToken != nil) {
-            spotifyService.sessionManager.renewSession()
-        }
+        spotifyService.sessionManager.renewSession()
     }
 
     @objc func didTapConnect(_ button: UIButton) {

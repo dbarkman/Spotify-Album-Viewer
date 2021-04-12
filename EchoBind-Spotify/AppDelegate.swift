@@ -15,6 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var spotifyService = SpotifyService()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        if let storedDate = UserDefaults.standard.object(forKey: "expirationDate") as? Date {
+            if Date() > storedDate {
+                print("Renewing Session")
+                let scope: SPTScope = [.userLibraryRead]
+                spotifyService.sessionManager.initiateSession(with: scope, options: .default)
+            }
+        }
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()

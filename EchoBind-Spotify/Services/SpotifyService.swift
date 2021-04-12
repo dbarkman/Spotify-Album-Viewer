@@ -27,7 +27,7 @@ class SpotifyService: NSObject, SPTSessionManagerDelegate {
     // MARK: - SPTSessionManagerDelegate
 
     func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
-        print("Authorization Failed")
+        print("Authorization Failed: \(error)")
     }
 
     func sessionManager(manager: SPTSessionManager, didRenew session: SPTSession) {
@@ -36,6 +36,8 @@ class SpotifyService: NSObject, SPTSessionManagerDelegate {
 
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         UserDefaults.standard.set(session.accessToken, forKey: "accessToken")
+        UserDefaults.standard.set(session.refreshToken, forKey: "refreshToken")
+        UserDefaults.standard.set(session.expirationDate, forKey: "expirationDate")
         print("Auth connected! AccessToken: \(session.accessToken)")
         print("Token expires: \(session.expirationDate)")
         NotificationCenter.default.post(name: .sessionInitiated, object: nil)
