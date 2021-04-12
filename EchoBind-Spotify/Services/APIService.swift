@@ -31,7 +31,7 @@ struct APIService {
 
     func getAlbums(getAlbumsWithUrlClosure: @escaping (JSON, HTTPURLResponse) -> Void) {
         guard let accessToken = UserDefaults.standard.string(forKey: "accessToken") else { return }
-        guard let url = URL(string: "https://api.spotify.com/v1/me/albums?market=US") else { return }
+        guard let url = URL(string: "https://api.spotify.com/v1/me/albums?market=US&limit=50") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -40,6 +40,16 @@ struct APIService {
 //        request.setValue("Bearer BQD50lOwGHDEJiV-9F3UJtAFDoOrqZE5ilJaRQ0rRaSZRqwu35bRoouio-yv5XSJYmrlF2Owswp-g8RRFcab35l7necBpRT1hPriq9rJFXF_ZdPd-4xTPcy6f22sFKbw59BhGrwY--DAQ-Mkylj5i2EoZ7c", forHTTPHeaderField: "Authorization")
         Network.callAPI(request: request, callAPIClosure: { json, response in
             getAlbumsWithUrlClosure(json, response)
+        })
+    }
+    
+    func downloadImage(from url: URL, downloadImageClosure: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        Network.getImage(from: url, getImageClosure: { data, response, error in
+            guard let data = data, error == nil else { return }
+            downloadImageClosure(data, response, error)
+//            DispatchQueue.main.async() { [weak self] in
+//                self?.imageView.image = UIImage(data: data)
+//            }
         })
     }
 }

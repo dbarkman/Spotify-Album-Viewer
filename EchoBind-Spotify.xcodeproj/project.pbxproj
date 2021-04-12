@@ -23,6 +23,7 @@
 		6353A1452623B3AD0091FC4F /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353A1442623B3AD0091FC4F /* SpotifyService.swift */; };
 		6353A14A2623B8100091FC4F /* SessionDidInitiateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353A1492623B8100091FC4F /* SessionDidInitiateEvent.swift */; };
 		6353A1502623CE0E0091FC4F /* AlbumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353A14F2623CE0E0091FC4F /* AlbumTableViewController.swift */; };
+		6353A1552623DF4E0091FC4F /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353A1542623DF4E0091FC4F /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		6353A1442623B3AD0091FC4F /* SpotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
 		6353A1492623B8100091FC4F /* SessionDidInitiateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDidInitiateEvent.swift; sourceTree = "<group>"; };
 		6353A14F2623CE0E0091FC4F /* AlbumTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewController.swift; sourceTree = "<group>"; };
+		6353A1542623DF4E0091FC4F /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			children = (
 				631246F326239A6C0064EFE1 /* AppDelegate.swift */,
 				6312472926239D7D0064EFE1 /* Services */,
+				6353A1532623DF370091FC4F /* Models */,
 				6312472A26239D8A0064EFE1 /* Views */,
 				6312472B26239D950064EFE1 /* Controllers */,
 				6353A1482623B7BA0091FC4F /* Messaging */,
@@ -205,6 +208,14 @@
 				6353A1492623B8100091FC4F /* SessionDidInitiateEvent.swift */,
 			);
 			path = Messaging;
+			sourceTree = "<group>";
+		};
+		6353A1532623DF370091FC4F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6353A1542623DF4E0091FC4F /* Album.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +358,7 @@
 				6353A14A2623B8100091FC4F /* SessionDidInitiateEvent.swift in Sources */,
 				6353A1502623CE0E0091FC4F /* AlbumTableViewController.swift in Sources */,
 				6312473E2623A4290064EFE1 /* SwiftyJSON.swift in Sources */,
+				6353A1552623DF4E0091FC4F /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
