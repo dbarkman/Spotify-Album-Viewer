@@ -14,11 +14,15 @@ class AlbumTableViewController: UITableViewController {
     let apiService = APIService()
     var albums = [Album]()
     lazy var spotifyService = SpotifyService()
+    let albumsRefreshControl = UIRefreshControl()
 
     // MARK: - Main Functions
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let helpAlbum = Album(id: "0", name: "Please wait while we fetch your albums from:", artist: "Spotify.com", imageURL: "")
+        albums.append(helpAlbum)
 
         let spotifyGreen = UIColor(red:(42.0 / 255.0), green:(183.0 / 255.0), blue:(89.0 / 255.0), alpha:1.0)
         view.backgroundColor = spotifyGreen
@@ -38,8 +42,15 @@ class AlbumTableViewController: UITableViewController {
 
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView(frame: .zero)
+
+        tableView.refreshControl = albumsRefreshControl
+        albumsRefreshControl.addTarget(self, action: #selector(refreshAlbums), for: .valueChanged)
     }
     
+    @objc func refreshAlbums() {
+        fetchAlbums()
+    }
+
     @objc func fetchAlbums() {
         apiService.getAlbums(getAlbumsWithUrlClosure: { json, response in
             DispatchQueue.main.async {
@@ -49,9 +60,10 @@ class AlbumTableViewController: UITableViewController {
     }
     
     func populateTable(_ json: JSON) {
+        albums.removeAll()
         let itemArray = json["items"].arrayValue
         if itemArray.count == 0 {
-            let helpAlbum = Album(id: "0", name: "You currently have no albums in your library on:", artist: "spotify.com", imageURL: "")
+            let helpAlbum = Album(id: "0", name: "You currently have no albums in your library on:", artist: "Spotify.com", imageURL: "")
             albums.append(helpAlbum)
             tableView.reloadData()
         }
@@ -69,9 +81,10 @@ class AlbumTableViewController: UITableViewController {
                let imageURL = item["album"]["images"][2]["url"].rawString() {
                 let album = Album(id: albumId, name: albumName, artist: artistsJoined, imageURL: imageURL)
                 albums.append(album)
-                tableView.reloadData()
             }
         }
+        tableView.reloadData()
+        albumsRefreshControl.endRefreshing()
     }
 
     // MARK: - TableView Functions
